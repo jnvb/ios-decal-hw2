@@ -11,6 +11,13 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet var customBtn1: UIButton!
+    @IBOutlet var customBtn2: UIButton!
+    @IBOutlet var iosDecalBtn: UIButton!
+    @IBOutlet var deleteBtn: UIButton!
+    @IBOutlet var returnBtn: UIButton!
+    @IBOutlet var imageBtn: UIButton!
+    @IBOutlet var pizzaBtn: UIButton!
     
     var keyboardView: UIView!
 
@@ -45,7 +52,48 @@ class KeyboardViewController: UIInputViewController {
         view.addSubview(keyboardView)
         view.backgroundColor = keyboardView.backgroundColor
         nextKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside) // advanceToNextInputMode is already defined in template
+        customBtn1.addTarget(self, action: "customBtn1Press", forControlEvents: .TouchUpInside)
+        customBtn2.addTarget(self, action: "customBtn2Press", forControlEvents: .TouchUpInside)
+        iosDecalBtn.addTarget(self, action: "iosDecalBtnPress", forControlEvents: .TouchUpInside)
+        deleteBtn.addTarget(self, action: "deleteBtnPress", forControlEvents: .TouchUpInside)
+        returnBtn.addTarget(self, action: "returnBtnPress", forControlEvents: .TouchUpInside)
+        imageBtn.addTarget(self, action: "imageBtnPress", forControlEvents: .TouchUpInside)
+        pizzaBtn.addTarget(self, action: "pizzaBtnPress", forControlEvents: .TouchUpInside)
+    }
+    
+    func deleteBtnPress()
+    {
+        textDocumentProxy.deleteBackward()
+    }
+    
+    func returnBtnPress()
+    {
+        textDocumentProxy.insertText("\n")
     }
 
+    func customBtn1Press()
+    {
+        textDocumentProxy.insertText(">.<")
+    }
+    
+    func customBtn2Press()
+    {
+        textDocumentProxy.insertText("@.@")
+    }
+    
+    func iosDecalBtnPress()
+    {
+        textDocumentProxy.insertText("IOS Decal!!")
+    }
+    
+    func imageBtnPress()
+    {
+        textDocumentProxy.insertText("")
+    }
+    
+    func pizzaBtnPress()
+    {
+        textDocumentProxy.insertText("🍕");
+    }
 
 }
